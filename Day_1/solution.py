@@ -5,7 +5,6 @@ import time
 
 ###############################################################################
 
-
 def timer(function):
     """Times the time in miliseconds that it takes for a function to run given
     its inputs.
@@ -100,8 +99,8 @@ def part2(test_data: np.ndarray, data: np.ndarray):
 ############################################################################### 
 
 if __name__ == '__main__':
-    test_data = np.loadtxt("test_input.txt").astype("int64")
-    data = np.loadtxt("input.txt").astype("int64")
+    test_data = np.loadtxt("test_input.txt", dtype="int")
+    data = np.loadtxt("input.txt", dtype="int")
     
     print("Part 1 " + "-"*40)
     part1(test_data, data)
