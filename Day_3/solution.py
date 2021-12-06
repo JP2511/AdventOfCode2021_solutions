@@ -41,7 +41,7 @@ def timer(function):
 ###############################################################################
 # part 1
 
-def sum_till_half(data: list, index: int) -> tuple:
+def sum_till_half(data: list, index: int) -> str:
     """Determines the most common value in the column.
 
     Args:
@@ -50,7 +50,6 @@ def sum_till_half(data: list, index: int) -> tuple:
             value.
 
     Returns:
-        index: index of the column the result applies to.
         : most common value in column.
     
     Requires:
@@ -63,15 +62,15 @@ def sum_till_half(data: list, index: int) -> tuple:
     for row in data:
         result += int(row[index])
         if result > half_length:
-            return (index, "1")
+            return "1"
     
-    return (index, "0")
+    return "0"
 
 
 def find_gamma(data: list) -> str:
-    """Finds the most common element in each column of the data (using 
-    multiprocessing) and generates a binary number where at each position there
-    is the most common number of each column of the same index.
+    """Finds the most common element in each column of the data and generates a 
+    binary number where at each position there is the most common number of each
+    column of the same index.
 
     Args:
         data: data from which the columns are used to generate the binary 
@@ -84,15 +83,9 @@ def find_gamma(data: list) -> str:
         each element of the data must contain only 1s and 0s.
     """
 
-    with mp.Pool(2) as p:
-        sums = p.map(ft.partial(sum_till_half,data), 
-                        range(len(data[0])))
+    sums = list(map(ft.partial(sum_till_half, data), range(len(data[0]))))
     
-    list_result = [0 for i in range(len(sums))]
-    for index, value in sums:
-        list_result[index] = value
-    
-    return "".join(list_result)
+    return "".join(sums)
 
 
 def invert_bin_2_int(bin_num: str) -> int:
@@ -219,7 +212,7 @@ def get_trie_values(trie_node: TrieNode) -> list:
     return result
 
 
-def find_common(trie_root: TrieNode, most) -> str:
+def find_common(trie_root: TrieNode, most: bool) -> str:
     """Finds either the most common value or the least common value at each 
     child node with the most (or least, respectively) common value and returns 
     the key formed by concatenating these values. If a node as only one value, 
