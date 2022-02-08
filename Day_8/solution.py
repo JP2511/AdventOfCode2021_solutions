@@ -90,6 +90,7 @@ def part1(test_data: list, data: list):
 
 
 ###############################################################################
+# part2
 
 def parse(raw_uniq_sig: str) -> dict:
     """Converts the ten unique signal pattern of each line into a dictionary of
