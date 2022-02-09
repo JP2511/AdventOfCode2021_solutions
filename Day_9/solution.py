@@ -13,6 +13,7 @@ def timer(function):
     Args:
         function: function to time.
     """
+    
     def inner(*args):
         start = time.time()
         print(f"The solution is: {function(*args)}")
@@ -21,7 +22,19 @@ def timer(function):
     return inner
 
 
-def open_file(filename: str) -> list:
+def read_file(filename: str) -> list:
+    """Reads the map of heights from the filename.
+
+    Args:
+        filename: name of the file.
+
+    Returns:
+        list[list[int]]: map of heights
+    
+    Requires:
+        filename has to be the name of a valid file
+    """
+
     with open(filename, 'r', encoding='utf8') as datafile:
         data = datafile.read().splitlines()
     
@@ -106,7 +119,7 @@ def check_min_cond(data: list, line: int, col: int, skip: set) -> bool:
     return conditions_met == 4
 
 
-def find_all_lows(data: list, get_low_points=False) -> int or list:
+def find_all_lows(data: list, get_low_points: bool=False) -> int or list:
     """Finds the number of values that are smaller than their neighbors in all
     four directions or the coordinates associated with those values.
 
@@ -262,8 +275,8 @@ def part2(test_data: list, data: list):
 ###############################################################################
 
 if __name__ == '__main__':
-    test_data = open_file("test_input.txt")
-    data = open_file("input.txt")
+    test_data = read_file("test_input.txt")
+    data = read_file("input.txt")
 
     print("Part 1 " + "-"*30)
     part1(test_data, data)
