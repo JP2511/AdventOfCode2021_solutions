@@ -103,8 +103,7 @@ def part1(test_data: list, data: list):
     """Solves the second part of the problem for day 10.
 
     Args:
-        test_data (list[str]): small dataset provided to test the 
-            algorithm.
+        test_data (list[str]): small dataset provided to test the algorithm.
         data (list[str]): dataset used to solve part 1 of the problem.
     """
 
